@@ -3776,22 +3776,27 @@
       color: #fff;
     }
 
-    /* ── Big Wordmark at end (as first written) ── */
+    /* ── Big Wordmark at end (single line, no wrapping, perfectly aligned) ── */
     .foot-word {
       display: flex;
       justify-content: center;
-      font: 800 clamp(4rem, 19.5vw, 19rem)/.9 var(--display);
-      letter-spacing: -.05em;
-      margin: clamp(2.5rem, 5vw, 4rem) 0 -.1em;
+      align-items: center;
+      flex-wrap: nowrap !important;
+      white-space: nowrap !important;
+      width: 100%;
+      font: 800 clamp(3.2rem, 14.5vw, 15.5rem)/0.9 var(--display);
+      letter-spacing: -0.04em;
+      margin: clamp(2rem, 4vw, 3.5rem) 0 0;
       user-select: none;
       overflow: hidden;
-      padding-bottom: .05em;
+      padding-bottom: 0.05em;
     }
 
     .foot-word span {
       display: inline-block;
-      color: rgba(255, 255, 255, .07);
-      transition: color .4s, translate .5s var(--ease);
+      flex: 0 0 auto;
+      color: rgba(255, 255, 255, 0.07);
+      transition: color 0.4s, translate 0.5s var(--ease);
       will-change: transform;
     }
 
@@ -6306,7 +6311,7 @@
         gsap.from(".contact-right", { y: 80, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: ".contact-right", start: "top 88%" } });
         gsap.from(".cinfo li", { x: -40, opacity: 0, stagger: 0.12, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: ".cinfo", start: "top 88%" } });
         gsap.to(".cb1", { y: 160, ease: "none", scrollTrigger: { trigger: "#contact", start: "top bottom", end: "bottom top", scrub: true } });
-        gsap.from("#footWord span", { yPercent: 105, stagger: 0.06, ease: "none", scrollTrigger: { trigger: "#footWord", start: "top 98%", end: "bottom bottom", scrub: 0.6 } });
+        gsap.from("#footWord span", { yPercent: 105, stagger: 0.03, duration: 0.85, ease: "power3.out", scrollTrigger: { trigger: "#footWord", start: "top 95%", once: true } });
         gsap.from(".foot-top > *", { y: 40, opacity: 0, stagger: 0.12, duration: 0.9, scrollTrigger: { trigger: ".foot-top", start: "top 92%" } });
 
         /* ===== active nav link ===== */
