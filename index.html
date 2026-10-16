@@ -2819,19 +2819,23 @@
 
     /* ───── testimonials ───── */
     .testi-section {
-      overflow: hidden
+      overflow: hidden;
     }
 
     .testi-rail {
       overflow: hidden;
-      padding: 1rem 0
+      padding: 1.2rem 0;
+    }
+
+    .testi-rail .m-set {
+      align-items: stretch;
     }
 
     .tcard {
       flex: none;
-      width: clamp(300px, 34vw, 460px);
-      margin-right: 1.2rem;
-      padding: 2rem 2rem 1.8rem;
+      width: clamp(320px, 32vw, 440px);
+      margin-right: 1.4rem;
+      padding: 2.2rem 2rem 2rem;
       border-radius: 28px;
       background: #fff;
       border: 1px solid var(--paper-line);
@@ -2839,36 +2843,41 @@
       flex-direction: column;
       gap: 1.3rem;
       position: relative;
-      transition: translate .5s var(--ease), rotate .5s var(--ease), background .5s, color .5s
+      transition: translate .5s var(--ease), rotate .5s var(--ease), background .5s, color .5s, box-shadow .5s;
     }
 
-    .tcard:hover {
-      background: var(--ink);
-      color: #fff;
-      translate: 0 -8px;
-      rotate: -1deg
+    @media (hover: hover) and (pointer: fine) {
+      .tcard:hover {
+        background: var(--ink);
+        color: #fff;
+        translate: 0 -8px;
+        rotate: -1deg;
+        box-shadow: 0 35px 60px -25px rgba(11, 12, 16, .35);
+      }
     }
 
     .tq {
-      font: 800 6rem/.6 var(--display);
+      font: 800 5.5rem/0.6 var(--display);
       color: var(--red);
-      height: 2.4rem
+      height: 2.2rem;
+      user-select: none;
     }
 
     .tcard blockquote {
       font-size: 1.02rem;
       line-height: 1.65;
-      flex: 1;
+      flex: 1 1 auto;
       color: inherit;
       opacity: .88;
-      white-space: normal
+      white-space: normal;
     }
 
     .tcard figcaption {
       display: flex;
       gap: .9rem;
       align-items: center;
-      white-space: normal
+      white-space: normal;
+      margin-top: auto;
     }
 
     .tav {
@@ -2880,18 +2889,99 @@
       display: grid;
       place-items: center;
       font: 700 .85rem var(--display);
-      flex: none
+      flex: none;
     }
 
     .tcard b {
       display: block;
       font-family: var(--display);
-      font-size: 1.05rem
+      font-size: 1.05rem;
     }
 
     .tcard small {
       font-size: .8rem;
-      opacity: .65
+      opacity: .65;
+    }
+
+    @media (max-width: 1024px) {
+      .tcard {
+        width: clamp(300px, 42vw, 400px);
+        padding: 1.8rem 1.6rem 1.6rem;
+        gap: 1.1rem;
+        border-radius: 24px;
+        margin-right: 1.2rem;
+      }
+
+      .tq {
+        font-size: 4.8rem;
+        height: 2rem;
+      }
+
+      .tcard blockquote {
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .testi-rail {
+        padding: 0.8rem 0;
+      }
+
+      .tcard {
+        width: clamp(270px, 82vw, 360px);
+        margin-right: 1rem;
+        padding: 1.4rem 1.25rem 1.35rem;
+        border-radius: 20px;
+        gap: 0.95rem;
+      }
+
+      .tq {
+        font-size: 4rem;
+        height: 1.6rem;
+      }
+
+      .tcard blockquote {
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+
+      .tcard figcaption {
+        gap: 0.75rem;
+      }
+
+      .tav {
+        width: 40px;
+        height: 40px;
+        font-size: 0.78rem;
+      }
+
+      .tcard b {
+        font-size: 0.95rem;
+      }
+
+      .tcard small {
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tcard {
+        width: clamp(260px, 86vw, 320px);
+        padding: 1.25rem 1.1rem 1.25rem;
+        border-radius: 18px;
+        gap: 0.85rem;
+      }
+
+      .tq {
+        font-size: 3.6rem;
+        height: 1.45rem;
+      }
+
+      .tcard blockquote {
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
     }
 
     /* ───── ratings ───── */
@@ -2955,6 +3045,13 @@
     @media (max-width:900px) {
       .rate-grid {
         grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media (max-width:520px) {
+      .rate-grid {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
       }
     }
 
