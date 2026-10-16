@@ -54,9 +54,26 @@
       --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       --wrap: 1280px;
       --pad: clamp(1.25rem, 4vw, 2.5rem);
-      --radius: clamp(26px, 3.2vw, 46px);
+      --radius: clamp(24px, 3vw, 42px);
+      --sec-pad: clamp(2.8rem, 5vw, 4.5rem);
+      --sec-pad-top: var(--sec-pad);
+      --sec-pad-bot: calc(var(--sec-pad) + var(--radius));
       --navtop: 44px;
       --ease: cubic-bezier(.7, 0, .2, 1);
+    }
+
+    @media (max-width: 899px) {
+      :root {
+        --radius: clamp(18px, 2.5vw, 28px);
+        --sec-pad: clamp(2rem, 4vw, 2.8rem);
+      }
+    }
+
+    @media (max-width: 599px) {
+      :root {
+        --radius: clamp(14px, 2vw, 20px);
+        --sec-pad: clamp(1.5rem, 4vw, 2.1rem);
+      }
     }
 
     *,
@@ -154,7 +171,8 @@
 
     .section {
       position: relative;
-      padding: clamp(5.5rem, 10vw, 9rem) 0
+      padding-top: var(--sec-pad-top);
+      padding-bottom: var(--sec-pad-bot);
     }
 
     .dark {
@@ -180,7 +198,8 @@
     .sheet {
       border-radius: var(--radius) var(--radius) 0 0;
       margin-top: calc(var(--radius) * -1);
-      padding-top: calc(clamp(5.5rem, 10vw, 9rem) + var(--radius)*.4);
+      padding-top: var(--sec-pad-top);
+      padding-bottom: var(--sec-pad-bot);
       position: relative
     }
 
@@ -236,7 +255,7 @@
     }
 
     .sec-head {
-      margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: clamp(1.4rem, 2.8vw, 2.8rem);
       max-width: 60rem
     }
 
@@ -1291,8 +1310,7 @@
 
     /* ───── services (pinned horizontal) ───── */
     .svc-section {
-      padding-top: 0;
-      padding-bottom: 0;
+      position: relative;
     }
 
     .svc-pin {
@@ -1301,58 +1319,40 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: clamp(0.6rem, 1.2vh, 1rem);
-      padding-top: calc(clamp(1rem, 2vh, 1.8rem) + var(--radius) * 0.35);
-      padding-bottom: calc(clamp(1rem, 2vh, 1.8rem) + var(--radius) * 0.35);
-      overflow: hidden;
-    }
-
-    .svc-section .sec-head {
-      margin-bottom: 0;
-      max-width: 58rem;
-    }
-
-    .svc-section .sec-head h2 {
-      margin: .35rem 0 .45rem;
-      font-size: clamp(1.6rem, 2.3vw, 2.2rem);
-      line-height: 1.1;
-    }
-
-    .svc-section .sec-head .lead {
-      font-size: clamp(.88rem, 1vw, .95rem);
-      line-height: 1.45;
-      max-width: 46rem;
+      gap: clamp(1rem, 1.8vh, 1.5rem);
+      padding-bottom: 0;
+      overflow: hidden
     }
 
     .svc-bar {
       display: flex;
       align-items: center;
-      gap: 1.4rem;
+      gap: 2rem
     }
 
     .svc-count {
-      font: 700 clamp(1.5rem, 2.4vw, 2rem)/1 var(--display);
+      font: 700 clamp(2.2rem, 4vw, 3.4rem)/1 var(--display);
       letter-spacing: -.04em;
       display: flex;
       align-items: baseline;
-      gap: .35rem;
+      gap: .5rem
     }
 
     .svc-count i {
       font-style: normal;
       color: var(--red);
-      font-weight: 400;
+      font-weight: 400
     }
 
     .svc-count span:last-child {
-      color: rgba(20, 21, 26, .3);
+      color: rgba(20, 21, 26, .3)
     }
 
     .svc-prog {
       flex: 1;
       height: 2px;
       background: var(--paper-line);
-      position: relative;
+      position: relative
     }
 
     .svc-prog i {
@@ -1360,7 +1360,7 @@
       inset: 0;
       background: var(--spectrum);
       transform: scaleX(0);
-      transform-origin: 0 50%;
+      transform-origin: 0 50%
     }
 
     .svc-hint {
@@ -1370,28 +1370,28 @@
       font: 500 .72rem var(--mono);
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--on-light-mut);
+      color: var(--on-light-mut)
     }
 
     .svc-hint svg {
-      animation: nudge 1.6s ease-in-out infinite;
+      animation: nudge 1.6s ease-in-out infinite
     }
 
     @keyframes nudge {
       50% {
-        transform: translateX(7px);
+        transform: translateX(7px)
       }
     }
 
     .svc-track {
       --svc-pad-left: max(var(--pad), calc((100vw - var(--wrap))/2 + var(--pad)));
-      --svc-card-w: clamp(280px, 29vw, 400px);
+      --svc-card-w: clamp(300px, 31vw, 440px);
       display: flex;
-      gap: 1.4rem;
+      gap: 1.5rem;
       width: max-content;
       padding-left: var(--svc-pad-left);
       padding-right: max(var(--pad), calc(100vw - var(--svc-card-w) - var(--svc-pad-left)));
-      will-change: transform;
+      will-change: transform
     }
 
     .svc-card {
@@ -1399,16 +1399,16 @@
       --my: 50%;
       position: relative;
       flex: none;
-      width: clamp(280px, 29vw, 400px);
-      min-height: clamp(340px, 40vh, 395px);
-      padding: clamp(1.1rem, 1.4vw, 1.35rem);
-      border-radius: 22px;
+      width: clamp(290px, 30vw, 420px);
+      min-height: clamp(400px, 46vh, 460px);
+      padding: clamp(1.25rem, 1.8vw, 1.6rem);
+      border-radius: 24px;
       background: #fff;
       border: 1px solid var(--paper-line);
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      transition: transform .6s var(--ease), box-shadow .6s, background .5s, color .5s, border-color .5s;
+      transition: transform .6s var(--ease), box-shadow .6s, background .5s, color .5s, border-color .5s
     }
 
     .svc-card::before {
@@ -1417,154 +1417,144 @@
       inset: 0;
       background: radial-gradient(420px circle at var(--mx) var(--my), rgba(229, 22, 43, .14), transparent 60%);
       opacity: 0;
-      transition: opacity .4s;
+      transition: opacity .4s
     }
 
     .svc-card:hover::before {
-      opacity: 1;
+      opacity: 1
     }
 
     .svc-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 40px 70px -35px rgba(11, 12, 16, .4);
+      box-shadow: 0 40px 70px -35px rgba(11, 12, 16, .4)
     }
 
     .svc-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: clamp(.6rem, 1vh, .85rem);
+      margin-bottom: 1rem
     }
 
     .svc-num {
-      font: 700 clamp(2.4rem, 3vw, 3rem)/.9 var(--display);
+      font: 700 clamp(3rem, 3.6vw, 3.6rem)/.9 var(--display);
       letter-spacing: -.05em;
       color: transparent;
-      -webkit-text-stroke: 1.2px rgba(20, 21, 26, .35);
-      transition: .5s;
+      -webkit-text-stroke: 1.3px rgba(20, 21, 26, .35);
+      transition: .5s
     }
 
     .svc-ico {
-      width: clamp(48px, 4vw, 58px);
-      height: clamp(48px, 4vw, 58px);
-      color: var(--red);
+      width: 66px;
+      height: 66px;
+      color: var(--red)
     }
 
     .svc-ico * {
       stroke-dasharray: 1;
-      stroke-dashoffset: 0;
+      stroke-dashoffset: 0
     }
 
     .svc-card.draw .svc-ico *,
     .svc-card:hover .svc-ico * {
-      animation: draw 1.6s var(--ease) both;
+      animation: draw 1.6s var(--ease) both
     }
 
     @keyframes draw {
       from {
-        stroke-dashoffset: 1;
+        stroke-dashoffset: 1
       }
 
       to {
-        stroke-dashoffset: 0;
+        stroke-dashoffset: 0
       }
     }
 
     .svc-card h3 {
-      font-size: clamp(1.18rem, 1.35vw, 1.32rem);
-      margin-bottom: .35rem;
-      position: relative;
+      font-size: clamp(1.3rem, 1.5vw, 1.48rem);
+      margin-bottom: .5rem;
+      position: relative
     }
 
     .svc-card p {
       color: var(--on-light-mut);
-      font-size: .86rem;
-      line-height: 1.45;
-      margin-bottom: .65rem;
-      position: relative;
+      font-size: .92rem;
+      margin-bottom: .9rem;
+      position: relative
     }
 
     .svc-out {
       margin-top: auto;
-      padding: .55rem .8rem;
-      border-radius: 12px;
+      padding: .7rem .95rem;
+      border-radius: 14px;
       background: var(--paper);
-      font-size: .8rem;
-      line-height: 1.4;
+      font-size: .85rem;
       position: relative;
-      transition: .5s;
+      transition: .5s
     }
 
     .svc-out b {
       font-family: var(--mono);
-      font-size: .64rem;
+      font-size: .7rem;
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--red);
       display: block;
-      margin-bottom: .15rem;
+      margin-bottom: .2rem
     }
 
     .svc-link {
       position: relative;
       display: inline-flex;
       align-items: center;
-      gap: .45rem;
-      margin-top: .65rem;
+      gap: .55rem;
+      margin-top: .9rem;
       font-weight: 600;
-      font-size: .84rem;
-      width: max-content;
+      font-size: .88rem;
+      width: max-content
     }
 
     .svc-link .arr {
-      transition: transform .4s var(--ease);
+      transition: transform .4s var(--ease)
     }
 
     .svc-link:hover .arr {
-      transform: translateX(6px);
+      transform: translateX(6px)
     }
 
     .svc-card.is-active {
       background: var(--ink);
       color: #fff;
-      border-color: var(--ink);
+      border-color: var(--ink)
     }
 
     .svc-card.is-active p {
-      color: var(--on-dark-mut);
+      color: var(--on-dark-mut)
     }
 
     .svc-card.is-active .svc-out {
-      background: rgba(255, 255, 255, .07);
+      background: rgba(255, 255, 255, .07)
     }
 
     .svc-card.is-active .svc-num {
-      -webkit-text-stroke-color: rgba(255, 255, 255, .5);
+      -webkit-text-stroke-color: rgba(255, 255, 255, .5)
     }
 
     .svc-foot {
-      padding: 0;
-      margin-top: 0;
-      font-size: clamp(.88rem, 1vw, .96rem);
-      color: var(--on-light-mut);
+      padding: 1.25rem 0 0;
+      font-size: 1.1rem;
+      color: var(--on-light-mut)
     }
 
     @media (max-width:899px) {
-      .svc-section {
-        padding-top: var(--sec-pad-top);
-        padding-bottom: var(--sec-pad-bot);
-      }
-
       .svc-pin {
         min-height: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        gap: 1.2rem;
+        padding-bottom: 0
       }
 
       .svc-hint,
       .svc-bar {
-        display: none;
+        display: none
       }
 
       .svc-track {
@@ -1572,24 +1562,18 @@
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         padding-inline: var(--pad);
-        padding-bottom: 1.2rem;
+        padding-bottom: 1.2rem
       }
 
       .svc-card {
         scroll-snap-align: center;
         width: 82vw;
-        min-height: 380px;
-      }
-
-      .svc-foot {
-        padding: 1rem 0 0;
+        min-height: 480px
       }
     }
 
     /* ───── case studies ───── */
-    .cases-section {
-      padding-bottom: clamp(5rem, 9vw, 8rem)
-    }
+    .cases-section {}
 
     .case-stack {
       position: relative
@@ -1764,9 +1748,7 @@
     }
 
     /* ───── clients ───── */
-    .clients-section {
-      padding-bottom: clamp(4rem, 7vw, 6rem)
-    }
+    .clients-section {}
 
     .logo-rows {
       display: flex;
@@ -1931,7 +1913,8 @@
       position: relative;
       background: var(--darker);
       overflow: hidden;
-      padding: clamp(6rem, 12vw, 11rem) 0;
+      padding-top: var(--sec-pad-top);
+      padding-bottom: var(--sec-pad-bot);
       color: #fff;
       text-align: center
     }
@@ -3628,7 +3611,7 @@
     .foot {
       position: relative;
       background: #07080b;
-      padding-top: clamp(4rem, 6vw, 5.5rem);
+      padding-top: var(--sec-pad-top);
       overflow: hidden;
       z-index: 5;
       border-top: 1px solid var(--ink-line);
@@ -4203,15 +4186,15 @@
 
     <!-- ============ 3 · SERVICES ============ -->
     <section class="section light sheet svc-section" id="services">
-      <div class="svc-pin" id="svcPin">
-        <div class="wrap">
-          <div class="sec-head">
-            <span class="eyebrow"><i></i>Services</span>
-            <h2 class="split">Everything Your Brand Needs to Look Sharp and <span class="grad">Sell More</span></h2>
-            <p class="lead" data-r>Most agencies do one thing and outsource the rest. We do it all in-house, which means
-              your brand, your website, and your campaigns finally speak the same language. Here is what we deliver.</p>
-          </div>
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><i></i>Services</span>
+          <h2 class="split">Everything Your Brand Needs to Look Sharp and <span class="grad">Sell More</span></h2>
+          <p class="lead" data-r>Most agencies do one thing and outsource the rest. We do it all in-house, which means
+            your brand, your website, and your campaigns finally speak the same language. Here is what we deliver.</p>
         </div>
+      </div>
+      <div class="svc-pin" id="svcPin">
         <div class="wrap svc-bar">
           <div class="svc-count"><span id="svcNow">01</span><i>/</i><span>08</span></div>
           <div class="svc-prog"><i id="svcProg"></i></div>
@@ -4380,10 +4363,10 @@
               </svg></a>
           </article>
         </div>
-        <div class="wrap center svc-foot" data-r>
-          <p>Not sure where to start? <a class="ulink" href="#contact">Book a Free Strategy Call</a> and we will map it
-            out.</p>
-        </div>
+      </div>
+      <div class="wrap center svc-foot" data-r>
+        <p>Not sure where to start? <a class="ulink" href="#contact">Book a Free Strategy Call</a> and we will map it
+          out.</p>
       </div>
     </section>
 
